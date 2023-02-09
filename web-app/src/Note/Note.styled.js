@@ -65,7 +65,6 @@ export const DeleteButton = styled.button`
 `;
 
 
-
 export const Loader = styled(FiLoader)`
   -webkit-animation: icon-spin 2s infinite linear;
           animation: icon-spin 2s infinite linear;

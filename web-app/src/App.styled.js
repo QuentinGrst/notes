@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { css } from "styled-components";
+import { GlobalStyle } from "./GlobalStyle";
 
 export const Side = styled.aside`
   position: fixed;
@@ -13,6 +14,19 @@ export const Main = styled.main`
   height: 100vh;
   margin-inline-start: 240px;
 
+`;
+
+export const CreateButton = styled.button`
+ background-color:white;
+  height: 40px;
+  width: 200px;
+  margin: 20px;
+  gap: 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  background-color: ${({ theme }) => theme.asideBackgroundColor};
+  color: ${({ theme }) => theme.mainTextColor};
+  border: ${({ theme }) => theme.asideBackgroundColor}; 
 `;
 
 const CENTERED = css`

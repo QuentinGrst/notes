@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage, DeleteButton } from "./Note.styled";
+import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage, DeleteButton, CreateButton } from "./Note.styled";
 import { FiCheck, FiLoader } from "react-icons/fi"
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
 
 
-const Note = ({ onSave, onDelete }) => {
+const Note = ({ onSave, onDelete, onCreate }) => {
   const { id } = useParams();
 
   const [note, setNote] = useState(null);
@@ -58,6 +58,23 @@ const Note = ({ onSave, onDelete }) => {
     }
   };
 
+  const createNote = async () => {
+    setStatus("LOADING")
+    const response = await fetch(`/notes/`, {
+      method: "POST",
+      body: JSON.stringify(note),
+      title: "Nouvelle note",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      setStatus("CREATED");
+      onCreate(note.id);
+    } else {
+      setStatus("ERROR");
+    }
+  };
 
   useEffect(() => {
     fetchNote();
