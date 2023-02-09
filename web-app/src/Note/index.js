@@ -1,12 +1,12 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage } from "./Note.styled";
+import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage, DeleteButton } from "./Note.styled";
 import { FiCheck, FiLoader } from "react-icons/fi"
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
 
 
-const Note = ({ onSave }) => {
+const Note = ({ onSave, onDelete }) => {
   const { id } = useParams();
 
   const [note, setNote] = useState(null);
@@ -42,6 +42,21 @@ const Note = ({ onSave }) => {
     }
   };
 
+  const deleteNote = async () => {
+    setStatus("LOADING")
+    const response = await fetch(`/notes/${note.id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      setStatus("DELETED");
+      onDelete(note.id);
+    } else {
+      setStatus("ERROR");
+    }
+  };
 
 
   useEffect(() => {
@@ -100,8 +115,15 @@ const Note = ({ onSave }) => {
           <ErrorMessage>Erreur lors de la sauvegarde</ErrorMessage>
         ) : status === "LOADING" ? (
           <Loader />
-        ) : null}
+        ) : status === "DELETED" ? (
+          <IconAndLabel >
+            <FiCheck />
+            Supprimé
+          </IconAndLabel>
+        ) : null
+        }
       </SaveAndStatus>
+      <DeleteButton onClick={deleteNote} type="button">Supprimer</DeleteButton>
     </NoteForm >
   );
 };

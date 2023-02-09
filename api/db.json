@@ -2,18 +2,13 @@
   "notes": [
     {
       "id": 1,
-      "title": "REACT : JSSS",
+      "title": "REACT : JS",
       "content": "React est un framework de développement d'interfaces intéractives"
     },
     {
       "id": 2,
-      "title": "Utilisation de FrameworkKK",
+      "title": "Utilisation de Framework",
       "content": "bla bla bla"
-    },
-    {
-      "title": "Postmanmmm",
-      "content": "requête http\nMettre le lien http avec le port et faire la requête voulu\nYO\ncxcx",
-      "id": 4
     }
   ],
   "profile": {
