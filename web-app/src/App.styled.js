@@ -9,6 +9,7 @@ export const Side = styled.aside`
   top: 0;
   left: 0;
   bottom: 0;
+  overflow: auto;
   background-color: ${({ theme }) => theme.asideBackgroundColor};
 `;
 export const Main = styled.main`
