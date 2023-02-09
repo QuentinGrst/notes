@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Side, Main, MessageNoNoteSelected, LoaderWrapper, CreateButton } from "./App.styled";
+import { Side, Main, MessageNoNoteSelected, LoaderWrapper, CreateButton, AddCircle, AddText, ChangeTheme } from "./App.styled";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme, GlobalStyle } from "./GlobalStyle";
 import Note from "./Note";
@@ -9,6 +9,7 @@ import { Routes, useNavigate } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { Loader } from "./Note/Note.styled";
 import { Navigate } from "react-router-dom";
+import { HiMoon, HiPlusCircle, HiSun } from "react-icons/hi";
 
 function App() {
   const [notes, setNotes] = useState(null);
@@ -19,6 +20,16 @@ function App() {
     const notes = await response.json();
     setIsLoadong(false);
     setNotes(notes);
+  };
+
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
   };
 
   const Navigate = useNavigate();
@@ -52,13 +63,21 @@ function App() {
     setNotes([note, ...notes]);
   };
 
+
+
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyle />
       <Side>
-        <div>
-          <CreateButton onClick={createNote} type="button">Crée une note</CreateButton>
-        </div>
+        <AddText>
+          <ChangeTheme onClick={toggleTheme}>
+            {theme === 'light' ? <HiSun /> : <HiMoon />}
+          </ChangeTheme>
+          <p>Toutes les notes</p>
+          <AddCircle>
+            <HiPlusCircle onClick={createNote} type="button">Crée une note</HiPlusCircle>
+          </AddCircle>
+        </AddText>
         {isLoading && <LoaderWrapper>
           <Loader />
         </LoaderWrapper>}
@@ -80,7 +99,7 @@ function App() {
           <Route path="/notes/:id" element={< Note onSave={updateNote} onDelete={deleteNote} />} />
         </Routes>
       </Main>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 }
 

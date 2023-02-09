@@ -16,7 +16,7 @@ border: none;
 background-color: ${({ theme }) => theme.mainBackgroundColor};
 padding: ${INPUT_PADDING}px;
 font-size: 20px;
-color: inherit;
+color: ${({ theme }) => theme.mainTextColor};
 background: transparent;
 border-bottom: 5px solid ${({ theme }) => theme.asideBackgroundColor};
 `;
@@ -33,7 +33,7 @@ background: transparent;
 export const SaveAndStatus = styled.div`
 height: 60px;
 display: flex;
-color: green;
+color: ${({ theme }) => theme.mainTextColor};
 align-items: center;
 border-top: 1px solid  ${({ theme }) => theme.asideBackgroundColor};
 `;

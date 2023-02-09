@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { css } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
+import { HiPlusCircle, IconName } from "react-icons/hi";
 
 export const Side = styled.aside`
   position: fixed;
@@ -29,6 +30,34 @@ export const CreateButton = styled.button`
   border: ${({ theme }) => theme.asideBackgroundColor}; 
 `;
 
+export const ChangeTheme = styled.button`
+display: flex;
+align-items: center;
+font-size: 3vh;
+justify-content: space-around;
+background-color: transparent;
+border: none;
+height: 40px;
+width: 40px;
+color: ${({ theme }) => theme.mainTextColor};
+`;
+
+
+
+export const AddCircle = styled.div`
+display:flex;
+align-items:flex-end;
+justify-content: flex-end;
+font-size: 3vh;
+`;
+
+export const AddText = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-around;
+font-weight: bold;
+`;
+
 const CENTERED = css`
 display:flex;
 justify-content: center;
@@ -49,5 +78,6 @@ ${CENTERED}
 
 export const FullHeightAndWidthCentered = styled.div`
 height: 100%;
+width: 100%;
 ${CENTERED}
 `;

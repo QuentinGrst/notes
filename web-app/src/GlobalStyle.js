@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  color: white;
+  color: ${({ theme }) => theme.mainTextColor};
   background-color: #2c3338;
   margin: 0;
   color: ${({ theme }) => theme.mainTextColor};
@@ -33,7 +33,7 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  mainBackgroundColor: "#d3ccc7",
-  asideBackgroundColor: "#e2dcd8",
-  mainTextColor: "white",
+  mainBackgroundColor: "#e2dcd8",
+  asideBackgroundColor: "#d3ccc7",
+  mainTextColor: "dark",
 };

@@ -58,24 +58,6 @@ const Note = ({ onSave, onDelete, onCreate }) => {
     }
   };
 
-  const createNote = async () => {
-    setStatus("LOADING")
-    const response = await fetch(`/notes/`, {
-      method: "POST",
-      body: JSON.stringify(note),
-      title: "Nouvelle note",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    if (response.ok) {
-      setStatus("CREATED");
-      onCreate(note.id);
-    } else {
-      setStatus("ERROR");
-    }
-  };
-
   useEffect(() => {
     fetchNote();
   }, [id, fetchNote]);
