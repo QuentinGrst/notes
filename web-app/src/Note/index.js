@@ -42,6 +42,7 @@ const Note = ({ onSave, onDelete, onCreate }) => {
     }
   };
 
+
   const deleteNote = async () => {
     setStatus("LOADING")
     const response = await fetch(`/notes/${note.id}`, {
@@ -57,6 +58,26 @@ const Note = ({ onSave, onDelete, onCreate }) => {
       setStatus("ERROR");
     }
   };
+
+
+  useEffect(() => {
+
+    const delay = setTimeout(async () => {
+      const response = await fetch(`/notes/${note.id}`, {
+        method: "PUT",
+        body: JSON.stringify(note),
+        headers: {
+          "Content-Type": "application/json",
+        }
+      })
+    }, 1000)
+    return () => clearTimeout(delay);
+  }, [note])
+
+
+
+
+
 
   useEffect(() => {
     fetchNote();
