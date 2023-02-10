@@ -4,6 +4,7 @@ import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, Error
 import { FiCheck, FiLoader } from "react-icons/fi"
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
+import Modal from "../Modal";
 
 
 const Note = ({ onSave, onDelete, onCreate }) => {

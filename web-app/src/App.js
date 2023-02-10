@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
-import { Side, Main, MessageNoNoteSelected, LoaderWrapper, CreateButton, AddCircle, AddText, ChangeTheme, AddSearch, Search, Xbutton, DeleteSearch } from "./App.styled";
+import { Side, Main, MessageNoNoteSelected, LoaderWrapper, AddCircle, AddText, ChangeTheme, AddSearch, Search, DeleteSearch } from "./App.styled";
 import { ThemeProvider } from "styled-components";
 import { darkTheme, lightTheme, GlobalStyle } from "./GlobalStyle";
 import Note from "./Note";
 import LinkToNote from "./LinkToNote";
+// import Modal from "./Modal";
 import { NoteList } from "./NoteList/NoteList.styled.js";
 import { Routes, useNavigate } from "react-router-dom";
 import { Route } from "react-router-dom";
 import { Loader } from "./Note/Note.styled";
-import { Navigate } from "react-router-dom";
-import { HiMoon, HiPlusCircle, HiSun, HiSearch, HiX } from "react-icons/hi";
+import { HiMoon, HiPlusCircle, HiSun, HiX } from "react-icons/hi";
 
 function App() {
   const [notes, setNotes] = useState(null);
