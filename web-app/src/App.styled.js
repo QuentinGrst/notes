@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { css } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
-import { HiPlusCircle, IconName } from "react-icons/hi";
+import { HiPlusCircle, IconName, HiX } from "react-icons/hi";
 
 export const Side = styled.aside`
   position: fixed;
@@ -58,6 +58,35 @@ align-items: center;
 justify-content: space-around;
 font-weight: bold;
 `;
+
+export const AddSearch = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+margin: 15px;
+align-items: stretch;
+`;
+
+export const DeleteSearch = styled.button`
+font-size: 1.2vh;
+background: transparent;
+border-radius: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: ${({ theme }) => theme.mainTextColor};
+`;
+
+export const Search = styled.input`
+border-radius: 50px;
+background: transparent;
+width: 100%;
+color: ${({ theme }) => theme.mainTextColor};
+font-weight: bold;
+height: 25px;
+padding: 5px;
+`;
+
 
 const CENTERED = css`
 display:flex;

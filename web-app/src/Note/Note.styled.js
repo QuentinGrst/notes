@@ -35,7 +35,6 @@ height: 60px;
 display: flex;
 color: ${({ theme }) => theme.mainTextColor};
 align-items: center;
-border-top: 1px solid  ${({ theme }) => theme.asideBackgroundColor};
 `;
 
 export const SaveButton = styled.button`
@@ -44,7 +43,7 @@ export const SaveButton = styled.button`
   width: 200px;
   margin: 20px;
   gap: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   font-weight: bold;
   background-color: ${({ theme }) => theme.asideBackgroundColor};
   color: ${({ theme }) => theme.mainTextColor};
@@ -57,13 +56,21 @@ export const DeleteButton = styled.button`
   width: 200px;
   margin: 20px;
   gap: 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   font-weight: bold;
   background-color: ${({ theme }) => theme.asideBackgroundColor};
   color: ${({ theme }) => theme.mainTextColor};
   border: ${({ theme }) => theme.asideBackgroundColor}; 
 `;
 
+export const Footer = styled.div`
+display: flex;
+align-items: center;
+align-content: center;
+border: 5px solid ${({ theme }) => theme.asideBackgroundColor}; 
+border-left: none;
+border-right: none;
+`;
 
 export const Loader = styled(FiLoader)`
   -webkit-animation: icon-spin 2s infinite linear;

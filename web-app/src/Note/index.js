@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useParams } from "react-router-dom";
-import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage, DeleteButton, CreateButton } from "./Note.styled";
+import { NoteForm, NoteTitle, SaveAndStatus, SaveButton, TextArea, Loader, ErrorMessage, DeleteButton, CreateButton, Footer } from "./Note.styled";
 import { FiCheck, FiLoader } from "react-icons/fi"
 import { IconAndLabel } from "../IconAndLabel/IconAndLabel.styled";
 import { FullHeightAndWidthCentered } from "../App.styled";
@@ -103,26 +103,28 @@ const Note = ({ onSave, onDelete, onCreate }) => {
           });
         }}
       />
-      <SaveAndStatus>
-        <SaveButton>Sauvegarder</SaveButton>
-        {status === "SAVED" ? (
-          <IconAndLabel >
-            <FiCheck />
-            Sauvegarder
-          </IconAndLabel>
-        ) : status === "ERROR" ? (
-          <ErrorMessage>Erreur lors de la sauvegarde</ErrorMessage>
-        ) : status === "LOADING" ? (
-          <Loader />
-        ) : status === "DELETED" ? (
-          <IconAndLabel >
-            <FiCheck />
-            Supprimé
-          </IconAndLabel>
-        ) : null
-        }
-      </SaveAndStatus>
-      <DeleteButton onClick={deleteNote} type="button">Supprimer</DeleteButton>
+      <Footer>
+        <SaveAndStatus>
+          <SaveButton>Sauvegarder</SaveButton>
+          {status === "SAVED" ? (
+            <IconAndLabel >
+              <FiCheck />
+              Sauvegarder
+            </IconAndLabel>
+          ) : status === "ERROR" ? (
+            <ErrorMessage>Erreur lors de la sauvegarde</ErrorMessage>
+          ) : status === "LOADING" ? (
+            <Loader />
+          ) : status === "DELETED" ? (
+            <IconAndLabel >
+              <FiCheck />
+              Supprimé
+            </IconAndLabel>
+          ) : null
+          }
+        </SaveAndStatus>
+        <DeleteButton onClick={deleteNote} type="button">Supprimer</DeleteButton>
+      </Footer>
     </NoteForm >
   );
 };
